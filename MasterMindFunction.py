@@ -26,10 +26,10 @@ def Verificar(combinaçao,senha,jogo):
         for rang in range(0,4):
             jogo[rang] = senha[rang]
         MostrarJogo(jogo)
-        return False
+        return True
     if combinaçao == senha and derrota == 10:
         print("Você acertou de primeira, VOCÊ É O MASTERMIND diferenciado")
-        return False
+        return True
 
     for elemento in range(0,4):
         if combinaçao[elemento] == senha[elemento]:
@@ -41,9 +41,6 @@ def Verificar(combinaçao,senha,jogo):
 def MensagemDeSequenciaIncorretaeDerrota(combinaçao,senha):
     #Verificar se a sequencia é diferente e caso as tentativas chegue a 0 o jogador perde
     if combinaçao != senha:
-        print("-"*30)
-        print("Esta não é a sequência correta")
-        print(f"Tentativas restantes {derrota}")
         return True
             
        
@@ -62,10 +59,14 @@ NumeroAleatorio()
 while True:
     MostrarJogo(jogo)
     Input()
-    if Verificar(combinação,senha,jogo) == False:
+    if Verificar(combinação,senha,jogo) :
         break
     if MensagemDeSequenciaIncorretaeDerrota(combinação,senha):
         derrota-=1
+        print("-"*30)
+        print("Esta não é a sequência correta")
+        print(f"Tentativas restantes {derrota}")
+        print("-"*30)
         if derrota == 0:
             print("Você perdeu!")
             MostrarJogo(jogo)

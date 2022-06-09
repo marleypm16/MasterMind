@@ -43,8 +43,6 @@ class MasterMind:
                 self.MostrarJogo()
     def MensagemDeErroeErro(self):
         if self.combinaçao != self.senha:
-            print("Esta não é a sequência!")
-            print(f"Tentativas Restantes : {derrota}")
             return True
 
 #Coloco a classe na variavel game
@@ -62,6 +60,9 @@ while True:
         break
     if game.MensagemDeErroeErro():
         derrota-=1
+        print("Esta não é a sequência!")
+        print(f"Tentativas Restantes : {derrota}")
         if derrota == 0:
             print('Você perdeu!')
+            game.MostrarJogo()
             break
